@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,20 +17,25 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>Tag: 杂谈 - Cjp's Blog</title>
+  <title>扩展欧几里得算法和线性不定方程 - Cjp's Blog</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Cjp&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/%E6%9D%82%E8%B0%88/index.html">
+    <meta name="description" content="关于线性不定方程$ax+by &#x3D; c$的整数解Bézout’s lemma(贝祖定理) $设 a,b \in Z(x,y \ne 0),\forall x,y \in Z 满足 gcd(a,b)|ax+by$,$且 \exists x,y \in Z$,使$$ax+by &#x3D; gcd(a,b)$$  证明对于第一点：因为$$gcd(a,b)|a,gcd(a,b)|b$$所以$$g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扩展欧几里得算法和线性不定方程">
+<meta property="og:url" content="https://cjpgo.github.io/2025/01/26/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95%E5%92%8C%E7%BA%BF%E6%80%A7%E4%B8%8D%E5%AE%9A%E6%96%B9%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Cjp&#39;s Blog">
+<meta property="og:description" content="关于线性不定方程$ax+by &#x3D; c$的整数解Bézout’s lemma(贝祖定理) $设 a,b \in Z(x,y \ne 0),\forall x,y \in Z 满足 gcd(a,b)|ax+by$,$且 \exists x,y \in Z$,使$$ax+by &#x3D; gcd(a,b)$$  证明对于第一点：因为$$gcd(a,b)|a,gcd(a,b)|b$$所以$$g">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-01-26T13:53:07.000Z">
+<meta property="article:modified_time" content="2025-01-27T05:27:56.794Z">
 <meta property="article:author" content="Cjp">
-<meta name="twitter:card" content="summary">
+<meta property="article:tag" content="math algorithm">
+<meta name="twitter:card" content="summary_large_image">
   
   
   
-  
+  <meta name="keywords" content="math algorithm">
 
   <!-- feed -->
   
@@ -45,7 +50,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa index tech" id="start" layout="undefined" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/logo.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Cjp's Blog</div><div class="sub normal cap">但行好事</div><div class="sub hover cap" style="opacity:0">莫问前程</div></a></div></header>
@@ -57,31 +62,95 @@
 <nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><img no-lazy src="/images/blog.svg" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
 </div>
 <div class="widgets">
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/01/24/hello-world/"><span class="title">Hello World</span></a></div></widget>
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/01/26/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95%E5%92%8C%E7%BA%BF%E6%80%A7%E4%B8%8D%E5%AE%9A%E6%96%B9%E7%A8%8B/"><span class="title">扩展欧几里得算法和线性不定方程</span></a><a class="item title" href="/2025/01/24/hello-world/"><span class="title">Hello World</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/logo.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Cjp's Blog</div><div class="sub normal cap">但行好事</div><div class="sub hover cap" style="opacity:0">莫问前程</div></a></div></header>
-
- 
 
 
 
 
-<div class="navbar top"><nav class="post"><a href="/">Recent</a><a class="active" href="/tags">Tag: 杂谈</a><a href="/archives">Archives</a></nav></div>
-<div class="post-list post"><a class="post-card post" href="/2025/01/24/hello-world/">
-<article class="md-text"><div class="post-cover"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/a new start.png"/></div><h2 class="post-title">Hello World</h2><div class="excerpt"><p>A new Start初中时因为觉得好玩，就用hexo搭建过博客，但没什么用。转眼几年过去了，上了高中，学习了信息竞赛，我越发觉得一个文档管理系统的必要，就想到了博客。这不，又建了一个。
-作为网站的第一篇博客，我就在这里写下几句话：
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-01-26T13:53:07.000Z">2025-01-26</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2025-01-27T05:27:56.794Z">2025-01-27</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>扩展欧几里得算法和线性不定方程</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="关于线性不定方程-ax-by-c-的整数解"><a href="#关于线性不定方程-ax-by-c-的整数解" class="headerlink" title="关于线性不定方程$ax+by &#x3D; c$的整数解"></a>关于线性不定方程$ax+by &#x3D; c$的整数解</h1><h2 id="Bezout’s-lemma-贝祖定理"><a href="#Bezout’s-lemma-贝祖定理" class="headerlink" title="Bézout’s lemma(贝祖定理)"></a>Bézout’s lemma(贝祖定理)</h2><blockquote>
+<p>$设 a,b \in Z(x,y \ne 0),\forall x,y \in Z 满足 gcd(a,b)|ax+by$,$且 \exists x,y \in Z$,使$$ax+by &#x3D; gcd(a,b)$$</p>
+</blockquote>
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><h3 id="对于第一点："><a href="#对于第一点：" class="headerlink" title="对于第一点："></a>对于第一点：</h3><p>因为$$gcd(a,b)|a,gcd(a,b)|b$$<br>所以$$gcd(a,b)|ax,gcd(a,b)|by$$，则有$$gcd(a,b)|ax+by$$</p>
+<h3 id="对于第二点"><a href="#对于第二点" class="headerlink" title="对于第二点"></a>对于第二点</h3><p>考虑欧几里得法求最大gcd的最后一步，及$b&#x3D;0$时，此时若令$x&#x3D;1,y &#x3D; 0$,显然有$ax+by &#x3D; gcd(a,b)$,即$a\times 1+0\times 0 &#x3D; gcd(a,0)$。</p>
+<p>然后假设有$bx+(a\mod b)y &#x3D; gcd(b,a\mod b)$成立<br>因为$a\mod b &#x3D; a - \lfloor \frac{a}{b} \rfloor *b$</p>
+<p>所以$bx + (a - \lfloor \frac{a}{b} \rfloor *b)y &#x3D; gcd(b,a\mod b)$</p>
+<p>所以$bx + ay - \lfloor \frac{a}{b} \rfloor*by &#x3D; gcd(b,a\mod b)$</p>
+<p>所以$ay + b(x - \lfloor \frac{a}{b} \rfloor*y) &#x3D; gcd(b,a\mod b)$</p>
+<p>根据欧几里得法的结论:$gcd(a,b) &#x3D; gcd(b,a\mod b)$</p>
+<p>有$ay + b(x-\lfloor \frac{a}{b} \rfloor*y) &#x3D; gcd(a,b)$</p>
+<p>令$x’ &#x3D; y,y’ &#x3D; x-\lfloor \frac{a}{b} \rfloor*y$</p>
+<p>则$ax’ + by’ &#x3D; gcd(a,b)$</p>
+<p>运用数学归纳法，则得证。</p>
+<h2 id="ax-by-gcd-a-b"><a href="#ax-by-gcd-a-b" class="headerlink" title="$ax + by &#x3D; gcd(a,b)$"></a>$ax + by &#x3D; gcd(a,b)$</h2><p>对于$ax + by &#x3D; gcd(a,b)$根据贝祖定理，一定有解。我们可以根据上述数学归纳过程，修改$gcd$函数，在计算最大公约数完后，在递归的过程中求出$ax + by &#x3D; gcd(a,b)$的一组整数解。<br>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">exgcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> &amp;x,<span class="type">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!b) &#123;x = <span class="number">1</span>;y = <span class="number">0</span>;<span class="keyword">return</span> a;&#125;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> r = <span class="built_in">exgcd</span>(b,a%b,x,y);</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> tmp = x;</span><br><span class="line">	x = y;</span><br><span class="line">	y = tmp - a/b*y;</span><br><span class="line">	<span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ax-by-c"><a href="#ax-by-c" class="headerlink" title="$ax + by &#x3D; c$"></a>$ax + by &#x3D; c$</h2><p>对于更一般的$ax + by &#x3D; c$,首先明确，当 $gcd(a,b)|c$ 时方程一定有整数解。所以我们可以先求出$\frac{a\times gcd(a,b)}{c}x + \frac{b\times gcd(a,b)}{c}y &#x3D; gcd(a,b)$的一组特解$x0,y0$ 。<br>$(很显然，gcd(a\times \frac{gcd(a,b)}{c},b\times \frac{gcd(a,b)}{c}) &#x3D; gcd(a,b))$。</p>
+<p>然后$x&#x3D;x0\frac{c}{gcd(a,b)},y&#x3D;y0\frac{c}{gcd(a,b)}$就是$ax + by &#x3D; c$的一组特解。</p>
+<p>接下来我们讨论$ax+by&#x3D;c$的通解</p>
+<p>设其通解为$x&#x3D;x0\frac{c}{gcd(a,b)}+tm_1,y&#x3D;y0\frac{c}{gcd(a,b)}+tm_2$。</p>
+<p>然后带入$ax + by &#x3D; c$</p>
+<blockquote>
+<p>$a(x0\frac{c}{gcd(a,b)}+tm_1)+b(y0\frac{c}{gcd(a,b)}+tm_2)&#x3D;c$<br>$ax0\frac{c}{gcd(a,b)}+atm_1+by0\frac{c}{gcd(a,b)}+btm_2&#x3D;c$<br>$tam_1+tbm_2&#x3D;c-x0\frac{c}{gcd(a,b)}-y0\frac{c}{gcd(a,b)}$<br>$tam_1+tbm_2&#x3D;0$<br>$am_1+bm_2&#x3D;0$<br>$am_1&#x3D;-bm_2$</p>
+</blockquote>
+<p>观察$am_1 &#x3D; -bm_2$,从因数分解的角度分析，若上式成立，又因$am_1|a,bm_2|b$，则$am_1,bm_2都被a,b整除$。那么当$am_1,bm_2最小时$，其实就是$a,b$的最小公倍数。</p>
+<blockquote>
+<p>$lmc(a,b) &#x3D; \frac{ab}{gcd(a,b)}$<br>$am_1 &#x3D; lmc(a,b),-bm_2 &#x3D; lmc(a,b)$<br>$m_1 &#x3D; \frac{b}{gcd(a,b)},m_2 &#x3D;- \frac{a}{gcd(a,b)}$  </p>
+</blockquote>
+<p>所以$ax+by &#x3D; c$的通解为</p>
+<blockquote>
+<p>$x &#x3D; x0*\frac{c}{gcd(a,b)} + t\times \frac{b}{gcd(a,b)},y &#x3D; y0\times \frac{c}{gcd(a,b)} - t\times \frac{a}{gcd(a,b)}$</p>
+</blockquote>
+<p>最后对于$x,y$的最小正整数解$x’,y’$：</p>
+<blockquote>
+<p>$x’ &#x3D; (x\ mod \ b + b)\mod b,y’ &#x3D; (y\ mod \ b + b)\ mod\ b$</p>
+</blockquote>
 
-我希望这个寒假...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-01-24T03:47:36.557Z">2025-01-24</time></span></div></article>
-</a></div>
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>License</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/01/24/hello-world/">Hello World</a></div></section></div>
+
+
+
+
 
 
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Cjp</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1">Stellar 1.29.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%BA%BF%E6%80%A7%E4%B8%8D%E5%AE%9A%E6%96%B9%E7%A8%8B-ax-by-c-%E7%9A%84%E6%95%B4%E6%95%B0%E8%A7%A3"><span class="toc-text">关于线性不定方程$ax+by &#x3D; c$的整数解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bezout%E2%80%99s-lemma-%E8%B4%9D%E7%A5%96%E5%AE%9A%E7%90%86"><span class="toc-text">Bézout’s lemma(贝祖定理)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%81%E6%98%8E"><span class="toc-text">证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E7%AC%AC%E4%B8%80%E7%82%B9%EF%BC%9A"><span class="toc-text">对于第一点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E7%AC%AC%E4%BA%8C%E7%82%B9"><span class="toc-text">对于第二点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ax-by-gcd-a-b"><span class="toc-text">$ax + by &#x3D; gcd(a,b)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ax-by-c"><span class="toc-text">$ax + by &#x3D; c$</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>Scroll to Top</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
@@ -528,6 +597,26 @@
       })
     }
   });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    processEscapes: true
+  }
+});
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  }
+});
+MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
